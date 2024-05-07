@@ -83,6 +83,7 @@
         width: 90%;
         height: 100vh; /* Ocupa toda a altura da tela */
         overflow-y: auto; /* Adiciona rolagem vertical quando necessário */
+        padding-bottom: 20px; /* Adiciona um espaço entre o final do texto e o fundo da tela */
     }
 
     /* Estilo para o texto "É apenas o começo ❤️" */
@@ -120,6 +121,8 @@ function showTypedText() {
             typedTextElement.innerHTML += text.charAt(index);
             index++;
             setTimeout(type, typingSpeed);
+            // Scroll automático para o final do texto
+            typedTextElement.scrollTop = typedTextElement.scrollHeight;
         }
     }
 
