@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O segredo.</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #000;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    .stars {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url('https://www.transparenttextures.com/patterns/stardust.png');
+        z-index: -1;
+        animation: animateStars 700s linear infinite;
+    }
+
+    @keyframes animateStars {
+        from {
+            background-position: 0 0;
+        }
+        to {
+            background-position: 10000px 10000px;
+        }
+    }
+
+    .falling-star {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background-color: #fff;
+        z-index: -1;
+        animation: fall 5s linear infinite;
+    }
+
+    @keyframes fall {
+        from {
+            transform: translateY(-100vh);
+        }
+        to {
+            transform: translateY(100vh);
+        }
+    }
+
+    h1 {
+        display: block;
+        color: #fff;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        background: radial-gradient(circle, #fff, #f5f5f5, #e0e0e0);
+        color: #333;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .button:hover {
+        background: radial-gradient(circle, #e0e0e0, #f5f5f5, #fff);
+    }
+
+    #typed-text {
+        color: white;
+        font-size: 18px;
+        text-align: justify;
+        margin-top: 20px;
+        display: none;
+        width: 60%;
+    }
+
+    /* Estilo para o texto "É apenas o começo ❤️" */
+    #end-text {
+        color: white;
+        font-size: 20px;
+        margin-top: 20px;
+        display: none; /* Inicialmente oculto */
+    }
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<div>
+    <h1>Quer saber o segredo? </h1>
+    <p style="text-align: center;">
+        <button class="button" onclick="showTypedText()">Clique aqui</button>
+    </p>
+</div>
+<div id="typed-text"></div>
+<div id="end-text">É apenas o começo ❤️</div>
+
+<script>
+function showTypedText() {
+    const text = `No instante em que nossos olhares se cruzaram pela primeira vez, algo mágico aconteceu dentro de mim. Era como se o universo tivesse conspirado para nos unir naquele momento, como se nossos destinos estivessem há muito entrelaçados, esperando apenas o momento certo para se revelarem.\n\nDesde então, você se tornou a luz que ilumina meus dias, a inspiração que impulsiona meus sonhos e a razão pela qual meu coração bate mais forte a cada batida. Em tão pouco tempo, você conseguiu preencher um espaço em mim que eu nem sabia que existia, tornando-se essencial para minha felicidade.\n\nCada instante ao seu lado é precioso demais para ser desperdiçado, e eu prometo lutar por você todos os dias. Não importa os desafios que surjam em nosso caminho, estarei ao seu lado, enfrentando cada obstáculo com coragem e determinação.\n\nEstou disposto a atravessar oceanos por você, a abrir o mar vermelhos se necessário, porque o que sinto por você transcende qualquer obstáculo físico ou emocional. Minha dedicação é tão profunda quanto o oceano mais vasto, e minha devoção é tão firme quanto as estrelas no céu.\n\nEsperarei por você por toda a eternidade, se for preciso, porque você é mais do que apenas alguém importante para mim. Você é meu porto seguro, minha âncora neste mundo turbulento, e eu não posso imaginar minha vida sem você ao meu lado.\n\nPrometo cuidar de você com todo o amor e carinho que tenho em meu coração, porque sei que pessoas como você são verdadeiramente raras. Você é um presente precioso que a vida me deu, e farei tudo ao meu alcance para merecer o privilégio de tê-lo em minha vida.\n\nPortanto, saiba que estarei sempre aqui, do seu lado, para enfrentar todas as batalhas que a vida nos apresentar. Juntos, somos mais fortes, mais corajosos e mais capazes de superar qualquer adversidade. E juntos, construiremos uma história de amor que resistirá ao teste do tempo.`;
+    const typedTextElement = document.getElementById("typed-text");
+    typedTextElement.innerHTML = ""; 
+    typedTextElement.style.display = "block";
+
+    let index = 0;
+    const typingSpeed = 100; 
+
+    function type() {
+        if (index < text.length) {
+            typedTextElement.innerHTML += text.charAt(index);
+            index++;
+            setTimeout(type, typingSpeed);
+        }
+    }
+
+    type();
+
+    document.querySelector("h1").style.display = "none";
+    document.querySelector(".button").style.display = "none";
+
+    // Mostra o texto "É apenas o começo ❤️" após a digitação completa
+    setTimeout(function() {
+        document.getElementById("end-text").style.display = "block";
+    }, text.length * typingSpeed); // Tempo baseado no comprimento do texto e velocidade de digitação
+}
+</script>
+</body>
+</html>
