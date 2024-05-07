@@ -8,7 +8,6 @@
     body {
         margin: 0;
         overflow: hidden;
-        height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -80,9 +79,9 @@
         text-align: justify;
         margin-top: 20px;
         display: none;
-        width: 60%;
-        height: 100vh;
-        margin-bottom: .5em;
+        width: 90%;
+        height: 100vh; /* Ocupa toda a altura da tela */
+        overflow-y: auto; /* Adiciona rolagem vertical quando necessário */
     }
 
     /* Estilo para o texto "É apenas o começo ❤️" */
